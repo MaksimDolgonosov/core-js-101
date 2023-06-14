@@ -69,11 +69,9 @@ function getStringFromTemplate(firstName, lastName) {
  *   'Hello, Chuck Norris!' => 'Chuck Norris'
  */
 function extractNameFromTemplate(value) {
-  return value.replace(/Hello, /, '').replace(/\!/, '');
+  return value.replace(/Hello, /, '').replace(/!/, '');
   // throw new Error('Not implemented');
 }
-
-
 /**
  * Returns a first char of the given string.
  *
@@ -116,7 +114,7 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
-console.log(repeatString('A', 5));
+
 function repeatString(value, count) {
   return value.repeat(count);
   // throw new Error('Not implemented');
@@ -249,14 +247,14 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
-console.log(encodeToRot13('Why did the chicken cross the road?'));
+
 function encodeToRot13(str) {
   const alphU = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const alphL = 'abcdefghijklmnopqrstuvwxyz';
   const res = [];
 
   str.split('').forEach((letter) => {
-    if (letter == '?' || letter == '!' || letter == ' ') {
+    if (letter === '?' || letter === '!' || letter === ' ') {
       res.push(letter);
     } else if (alphU.indexOf(letter) >= 0) {
       if (alphU.indexOf(letter) + 13 >= alphU.length) {
@@ -318,7 +316,7 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-console.log(getCardId('Q♠'));
+
 function getCardId(value) {
   const cards = [
     'A♣', '2♣', '3♣', '4♣', '5♣', '6♣', '7♣', '8♣', '9♣', '10♣', 'J♣', 'Q♣', 'K♣',
