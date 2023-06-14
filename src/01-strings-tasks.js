@@ -116,11 +116,9 @@ function removeLeadingAndTrailingWhitespaces(value) {
  *   'A', 5  => 'AAAAA'
  *   'cat', 3 => 'catcatcat'
  */
+console.log(repeatString('A', 5))
 function repeatString(value, count) {
-  for (let i = 0; i < count; i++) {
-    value += value
-  }
-  return value;
+  return value.repeat(count);
   //throw new Error('Not implemented');
 }
 
@@ -170,8 +168,9 @@ function unbracketTag(str) {
  *   'Thunderstruck' => 'THUNDERSTRUCK'
  *  'abcdefghijklmnopqrstuvwxyz' => 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
  */
+
 function convertToUpperCase(str) {
-  str.toUpperCase();
+ return str.toUpperCase();
   // throw new Error('Not implemented');
 }
 
@@ -250,25 +249,32 @@ function getRectangleString(width, height) {
  *    => 'NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm'
  *
  */
+console.log(encodeToRot13('Why did the chicken cross the road?'))
 function encodeToRot13(str) {
   const alphU = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   const alphL = 'abcdefghijklmnopqrstuvwxyz';
   let res = [];
 
   str.split("").forEach(letter => {
-    if (alphU.indexOf(letter) >= 0) {
-      if (alphU.indexOf(letter) + 13 >= alphU.length) {
-        res.push(alphU[alphU.indexOf(letter) + 13 - alphU.length])
-      } else {
-        res.push(alphU[alphU.indexOf(letter) + 13]);
-      }
+    if(letter=="?"||letter=="!"|| letter==" " ) {
+      res.push(letter);
+      
     } else {
-      if (alphL.indexOf(letter) + 13 >= alphL.length) {
-        res.push(alphL[alphL.indexOf(letter) + 13 - alphL.length])
+      if (alphU.indexOf(letter) >= 0) {
+        if (alphU.indexOf(letter) + 13 >= alphU.length) {
+          res.push(alphU[alphU.indexOf(letter) + 13 - alphU.length])
+        } else {
+          res.push(alphU[alphU.indexOf(letter) + 13]);
+        }
       } else {
-        res.push(alphL[alphL.indexOf(letter) + 13]);
+        if (alphL.indexOf(letter) + 13 >= alphL.length) {
+          res.push(alphL[alphL.indexOf(letter) + 13 - alphL.length])
+        } else {
+          res.push(alphL[alphL.indexOf(letter) + 13]);
+        }
       }
     }
+    
   })
   return res.join("");
   // throw new Error('Not implemented');
