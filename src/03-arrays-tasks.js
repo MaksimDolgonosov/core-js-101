@@ -501,21 +501,21 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(n) {
-  let count = 0;
-  const arr = new Array(n);
-  arr.fill(new Array(n).fill(0));
-  function add(element) {
-    const res = element;
-    res[count] = 1;
-    count += 1;
-    return res;
-  }
-  return arr.map((el) => add(el));
-  // return arr;
-  // throw new Error('Not implemented');
+function getIdentityMatrix(/* n */) {
+  // let count = 0;
+  // const arr = new Array(n);
+  // arr.fill(new Array(n).fill(0));
+  // function add(element) {
+  //   const res = element;
+  //   res[count] = 1;
+  //   count += 1;
+  //   return res;
+  // }
+  // return arr.map((el) => add(el));
+
+  throw new Error('Not implemented');
 }
-console.log(getIdentityMatrix(5));
+// console.log(getIdentityMatrix(5));
 /**
  * Creates an array of integers from the specified start to end (inclusive)
  *
