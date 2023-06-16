@@ -501,21 +501,22 @@ function sortCitiesArray(arr) {
  *           [0,0,0,1,0],
  *           [0,0,0,0,1]]
  */
-function getIdentityMatrix(/* n */) {
-  // let count = 0;
-  // const arr = new Array(n);
-  // arr.fill(new Array(n).fill(0));
-  // function add(element) {
-  //   const res = element;
-  //   res[count] = 1;
-  //   count += 1;
-  //   return res;
-  // }
-  // return arr.map((el) => add(el));
+function getIdentityMatrix(n) {
+  const arr = new Array(n);
+  arr.fill(new Array(n).fill(0));
+  return arr.map((el, i) => {
+    const res = new Array(n).fill(0).map((element, k) => {
+      if (k === i) {
+        return 1;
+      }
+      return 0;
+    });
+    return res;
+  });
 
-  throw new Error('Not implemented');
+  // throw new Error('Not implemented');
 }
-// console.log(getIdentityMatrix(5));
+
 /**
  * Creates an array of integers from the specified start to end (inclusive)
  *
@@ -605,10 +606,11 @@ function group(/* array, keySelector, valueSelector */) {
  *   [[1, 2], [3, 4], [5, 6]], (x) => x     =>   [ 1, 2, 3, 4, 5, 6 ]
  *   ['one','two','three'], (x) => x.split('')  =>   ['o','n','e','t','w','o','t','h','r','e','e']
  */
-function selectMany(/* arr, childrenSelector */) {
-  throw new Error('Not implemented');
+function selectMany(arr, childrenSelector) {
+  const res = arr;
+  return res.map((el) => childrenSelector(el)).flat();
+  // throw new Error('Not implemented');
 }
-
 
 /**
  * Returns an element from the multidimensional array by the specified indexes.
@@ -645,8 +647,16 @@ function getElementByIndexes(/* arr, indexes */) {
  *   [ 1, 2, 3, 4, 5, 6, 7, 8 ]   =>  [ 5, 6, 7, 8, 1, 2, 3, 4 ]
  *
  */
-function swapHeadAndTail(/* arr */) {
-  throw new Error('Not implemented');
+function swapHeadAndTail(arr) {
+  if (arr.length % 2 === 0) {
+    const head = arr.slice(Math.floor(arr.length / 2), arr.length);
+    const tail = arr.slice(0, Math.floor(arr.length / 2));
+    return [...head, ...tail];
+  }
+  const head = arr.slice(Math.floor(arr.length / 2) + 1, arr.length);
+  const tail = arr.slice(0, Math.floor(arr.length / 2));
+  return [...head, arr[Math.floor(arr.length / 2)], ...tail];
+  // throw new Error('Not implemented');
 }
 
 
