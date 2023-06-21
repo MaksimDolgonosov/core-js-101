@@ -386,10 +386,26 @@ function toNaryString(/* num, n */) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/verbalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
-  throw new Error('Not implemented');
-}
+function getCommonDirectoryPath(pathes) {
+  let res = '';
+  const arr = pathes.map((item) => item.split(''));
+  for (let i = 0; i < arr[0].length; i += 1) {
+    if (arr.every((item) => item[i] === arr[0][i])) {
+      res += `${arr[0][i]}`;
+    } else {
+      res += '';
 
+      if (res.lastIndexOf('/') !== res.length - 1) {
+        return res.substring(0, res.lastIndexOf('/') + 1);
+      }
+      return res;
+    }
+  }
+
+
+  return res;
+  // throw new Error('Not implemented');
+}
 
 /**
  * Returns the product of two specified matrixes.
